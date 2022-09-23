@@ -16,20 +16,3 @@
   background-color: whitesmoke;
   color: black;
 }
-
-.content {
-  width: 800px;
-  height: 150px;
-  border: 3px solid black;
-  padding: 50px;
-  margin: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-footer {
-  width: 400px;
-  height: 100px;
-  border: 1px solid blue;
-}

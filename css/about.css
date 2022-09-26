@@ -1,0 +1,43 @@
+.content {
+  width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+.intro {
+  border: 3px solid purple;
+  width: 50%;
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+}
+
+.hobbies {
+  float: left;
+  background-color: violet;
+  height: 300px;
+  text-align: center;
+  padding: 20px;
+  width: 250px;
+  margin: 20px;
+}
+
+.music {
+  float: left;
+  background-color: cadetblue;
+  height: 300px;
+  text-align: center;
+  padding: 20px;
+  width: 250px;
+  margin: 20px;
+}
+
+.games {
+  float: left;
+  background-color: chartreuse;
+  height: 300px;
+  text-align: center;
+  padding: 20px;
+  width: 250px;
+  margin: 20px;
+}

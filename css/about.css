@@ -1,4 +1,11 @@
 @import url('nav.css');
+
+.content {
+  width: 1000px;
+  margin: auto;
+  padding: 25px;
+}
+
 .intro {
   border: 3px solid purple;
   width: 50%;
@@ -7,6 +14,11 @@
   text-align: center;
 }
 
+.intro p {
+  padding: 5px;
+  font-size: 15px;
+  line-height: 1.6;
+}
 .hobbies {
   float: left;
   background-color: violet;
@@ -34,6 +46,7 @@
 .music ol li {
   padding: 5px;
 }
+
 .games {
   float: left;
   background-color: chartreuse;
@@ -42,4 +55,8 @@
   padding: 20px;
   width: 250px;
   margin: 20px;
+}
+
+.games p {
+  line-height: 2;
 }

@@ -41,6 +41,10 @@
   margin: 20px;
 }
 
+.hobbies ol li {
+  padding: 5px;
+}
+
 .music {
   float: left;
   background-color: cadetblue;
@@ -51,6 +55,9 @@
   margin: 20px;
 }
 
+.music ol li {
+  padding: 5px;
+}
 .games {
   float: left;
   background-color: chartreuse;

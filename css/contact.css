@@ -23,6 +23,7 @@
   padding: 20px;
   margin: auto;
   background-color: aqua;
+  display: flexbox;
 }
 
 h2 {

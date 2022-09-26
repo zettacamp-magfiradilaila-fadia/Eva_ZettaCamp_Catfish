@@ -16,7 +16,6 @@
   background-color: whitesmoke;
   color: black;
 }
-
 .content {
   width: 1000px;
   border: 1px solid black;
@@ -25,6 +24,9 @@
   background-color: aqua;
 }
 
+h1 {
+  text-align: center;
+}
 .phone-email {
   width: 50%;
   padding: 40px;

@@ -1,17 +1,4 @@
-.nav {
-  overflow: hidden;
-  background-color: violet;
-}
-
-.nav a {
-  float: left;
-  color: white;
-  text-align: center;
-  padding: 15px 20px;
-  text-decoration: none;
-  font-size: 20px;
-}
-
+@import url('nav.css');
 .nav a:hover {
   background-color: whitesmoke;
   color: black;

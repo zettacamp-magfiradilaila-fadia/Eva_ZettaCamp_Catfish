@@ -60,3 +60,26 @@
 .games p {
   line-height: 2;
 }
+
+.test {
+  width: 50%;
+  margin: auto;
+  padding: 10px;
+}
+
+.test h2 {
+  text-align: center;
+  font-size: 28px;
+}
+
+.test table {
+  padding: 10px;
+  border-collapse: collapse;
+}
+
+.test th,
+td {
+  border: 1px solid black;
+  text-align: center;
+  padding: 10px;
+}

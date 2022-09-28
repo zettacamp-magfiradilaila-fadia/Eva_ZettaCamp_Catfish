@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Form</title>
+    <link rel="stylesheet" href="css/form.css" />
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>User Form</legend>
+        <p>
+          <label for="first-name">First name : </label>
+          <input type="text" id="first-name" name="first-name" /> <br />
+        </p>
+        <p>
+          <label for="last-name">Last name : </label>
+          <input type="text" id="last-name" name="last-name" />
+        </p>
+        <p>
+          <label for="biodata">Biodata : </label>
+          <textarea name="biodata" id="bio" cols="40" rows="5"></textarea> <br />
+        </p>
+        <p>
+          <label for="gender">Gender : </label>
+          <label><input type="radio" name="gender" value="Male" />Male</label>
+          <label><input type="radio" name="gender" value="Female" />Female</label> <br />
+        </p>
+        <p>
+          <label for="email">Email : </label>
+          <input type="email" name="email" /> <br />
+        </p>
+        <p>
+          <label for="telephone">Telephone : </label>
+          <input type="tel" name="telephone" /> <br />
+        </p>
+        <p>
+          <label for="birth">Date of Birth : </label>
+          <input type="date" name="birth" /> <br />
+        </p>
+        <p>
+          <label for="age">Age : </label>
+          <input type="number" name="age" /> <br />
+        </p>
+        <p>
+          <label for="url">Url for website or social media : </label>
+          <input type="url" name="url" /> <br />
+        </p>
+        <p>
+          <input type="submit" name="submit" value="Submit" />
+        </p>
+      </fieldset>
+    </form>
+  </body>
+</html>

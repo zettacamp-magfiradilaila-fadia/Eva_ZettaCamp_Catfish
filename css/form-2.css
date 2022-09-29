@@ -18,9 +18,9 @@ label {
 }
 
 table {
-  width: 850px;
+  width: 900px;
   margin: auto;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
   border-collapse: collapse;
 }
@@ -29,5 +29,5 @@ th,
 td {
   border: 1px green solid;
   text-align: center;
-  padding: 10px;
+  padding: 15px;
 }

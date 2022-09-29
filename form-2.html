@@ -3,7 +3,7 @@
   <head>
     <title>Form and Display</title>
     <link rel="stylesheet" href="css/form-2.css" />
-    <script src="js/form-2.js"></script>
+    
   </head>
   <body>
     <div class="nav">
@@ -12,61 +12,78 @@
         <a href="table-input.html">Table</a>
       </nav>
     </div>
-    <form method="post">
-      <fieldset>
-        <legend>Data Form</legend>
-        <p>
-          <label for="id">ID : </label>
-          <input type="number" name="id" id="num" /> <br />
-        </p>
-        <p>
-          <label for="name">Name : </label>
-          <input type="text" id="name" name="name" /> <br />
-        </p>
-        <p>
-          <label for="gender">Gender : </label>
-          <select id="gender">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="none">None</option>
-          </select>
-        </p>
-        <p>
-          <label for="email">Email : </label>
-          <input type="email" name="email" id="email" /> <br />
-        </p>
-        <p>
-          <label for="image">Photo : </label>
-          <input type="file" name="photo" id="pic" /> <br />
-        </p>
-        <p>
-          <label for="telephone">Telephone : </label>
-          <input type="tel" name="telephone" id="phone" /> <br />
-        </p>
-        <p>
-          <label for="address">Address : </label>
-          <textarea name="address" id="add" cols="40" rows="5"></textarea> <br />
-        </p>
-        <p>
-          <label for="birth">Date of Birth : </label>
-          <input type="date" name="birth" id="dob" /> <br />
-        </p>
-        <p>
-          <input type="button" name="button" id="btn" value="Submit" onclick="AddRow()" />
-        </p>
-      </fieldset>
-    </form>
-    <table id="result">
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Gender</th>
-        <th>Email</th>
-        <th>Photo</th>
-        <th>Telephone</th>
-        <th>Address</th>
-        <th>Date of Birth</th>
-      </tr>
-    </table>
+    <section id="form">
+      <form action="table-input.html" method="GET">
+        <fieldset>
+          <legend>Data Form</legend>
+          <p>
+            <label for="id">ID : </label>
+            <input type="number" name="id" id="num" /> <br />
+          </p>
+          <p>
+            <label for="name">Name : </label>
+            <input type="text" id="name" name="name" /> <br />
+          </p>
+          <p>
+            <label for="gender">Gender : </label>
+            <select id="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="none">None</option>
+            </select>
+          </p>
+          <p>
+            <label for="email">Email : </label>
+            <input type="email" name="email" id="email" /> <br />
+          </p>
+          <p>
+            <label for="image">Photo : </label>
+            <input type="file" name="photo" id="pic" /> <br />
+          </p>
+          <p>
+            <label for="telephone">Telephone : </label>
+            <input type="tel" name="telephone" id="phone" /> <br />
+          </p>
+          <p>
+            <label for="address">Address : </label>
+            <textarea name="address" id="add" cols="40" rows="5"></textarea> <br />
+          </p>
+          <p>
+            <label for="birth">Date of Birth : </label>
+            <input type="date" name="birth" id="dob" /> <br />
+          </p>
+          <p>
+            <input type="button" onclick="addRow();">Submit</input>
+          </p>
+        </fieldset>
+      </form>
+    </section>
+
+    <section id="table">
+      <table id="result">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Email</th>
+          <th>Photo</th>
+          <th>Telephone</th>
+          <th>Address</th>
+          <th>Date of Birth</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>John</td>
+          <td>Male</td>
+          <td>john@example.com</td>
+          <td>
+            <img src="img/discord.png" alt="John" width="200px" height="200px">
+          </td>
+          <td>112233445566</td>
+          <td>Anonymous Road</td>
+          <td>09/29/2022</td>
+        </tr>
+      </table>
+    </section>
   </body>
 </html>

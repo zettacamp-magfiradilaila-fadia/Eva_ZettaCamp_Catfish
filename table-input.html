@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Table Input</title>
+    <link rel="stylesheet" href="css/table-input.css" />
+  </head>
+  <body>
+    <div class="nav">
+      <nav>
+        <a href="form-2.html">Form</a>
+        <a href="table-input.html">Table</a>
+      </nav>
+    </div>
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Date of Birth</th>
+        <th>Number Phone</th>
+        <th>Gender</th>
+        <th>Email</th>
+        <th>Address</th>
+      </tr>
+      <tr>
+        <td>
+          <input type="number" name="no" />
+        </td>
+        <td>
+          <input type="text" name="name" />
+        </td>
+        <td>
+          <input type="number" name="age" />
+        </td>
+        <td>
+          <input type="date" name="dob" />
+        </td>
+        <td>
+          <input type="tel" name="phone" />
+        </td>
+        <td>
+          <select id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="none">None</option>
+          </select>
+        </td>
+        <td>
+          <input type="email" name="mail" />
+        </td>
+        <td>
+          <textarea name="address" cols="20" rows="5"></textarea>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

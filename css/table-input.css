@@ -1,0 +1,21 @@
+@import url('nav.css');
+
+table {
+  width: 850px;
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px green solid;
+  text-align: center;
+  padding: 10px;
+}
+
+input {
+  width: 100px;
+  text-align: center;
+}

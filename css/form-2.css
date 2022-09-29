@@ -1,0 +1,33 @@
+@import url('nav.css');
+
+form {
+  width: 600px;
+  margin: auto;
+  padding: 5px;
+}
+
+label {
+  padding-right: 5px;
+  text-align: right;
+  width: 150px;
+}
+
+input,
+label {
+  float: left;
+}
+
+table {
+  width: 850px;
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px green solid;
+  text-align: center;
+  padding: 10px;
+}

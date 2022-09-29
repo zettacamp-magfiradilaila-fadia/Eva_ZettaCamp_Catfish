@@ -1,6 +1,7 @@
 .nav {
   overflow: hidden;
   background-color: violet;
+  margin: 15px;
 }
 
 .nav a {

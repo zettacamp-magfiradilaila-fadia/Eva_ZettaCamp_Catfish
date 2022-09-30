@@ -2,22 +2,24 @@
 <html lang="en">
   <head>
     <title>Register Form</title>
-    <link rel="stylesheet" href="css/register.css" />
+    <style>
+      label {
+        padding-right: 5px;
+        text-align: right;
+        width: 150px;
+      }
+    </style>
   </head>
   <body>
-    <form>
+    <form style="width: 500px; margin: auto">
       <fieldset>
         <legend>Registration</legend>
         <p>
-          <label for="first-name">First name : </label>
-          <input type="text" id="first-name" name="first-name" /> <br />
+          <label for="name">Name : </label>
+          <input type="text" id="name" name="name" /> <br />
         </p>
         <p>
-          <label for="last-name">Last name : </label>
-          <input type="text" id="last-name" name="last-name" />
-        </p>
-        <p>
-          <label for="biodata">Biodata : </label>
+          <label for="description">Description : </label>
           <textarea name="biodata" id="bio" cols="40" rows="5"></textarea> <br />
         </p>
         <p>
@@ -45,6 +47,9 @@
           <label for="service">Select your account type : </label>
           <label><input type="radio" name="service" value="free" />Free</label>
           <label><input type="radio" name="service" value="premium" />Premium</label> <br />
+        </p>
+        <p>
+          <a href="profile.html" style="border: 3px black solid; padding: 12px">Submit</a>
         </p>
       </fieldset>
     </form>

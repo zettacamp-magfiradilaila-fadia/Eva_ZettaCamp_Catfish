@@ -1,0 +1,9 @@
+@import url('nav.css');
+
+.contain {
+  border: 2px peru solid;
+  padding: 10px;
+  margin: auto;
+  width: 400px;
+  height: 800px;
+}

@@ -1,0 +1,9 @@
+@import url('nav.css');
+
+.profile {
+  padding: 10px;
+  margin: auto;
+  text-align: center;
+  border: 1px black solid;
+  width: 400px;
+}

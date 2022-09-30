@@ -18,3 +18,42 @@ ol li {
   padding: 5px 2px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
+.price {
+  margin: auto;
+  padding: 10px;
+}
+
+.price h1 {
+  text-align: center;
+}
+
+.package {
+  display: flex;
+  justify-content: center;
+}
+
+.free {
+  background-color: violet;
+  height: 300px;
+  text-align: center;
+  width: 250px;
+  margin: 10px;
+}
+
+.premium {
+  float: right;
+  background-color: royalblue;
+  height: 300px;
+  text-align: center;
+  width: 250px;
+  margin: 10px;
+}
+
+.free a,
+.premium a {
+  border: 3px white solid;
+  border-radius: 10px 10px;
+  padding: 10px;
+  background-color: aliceblue;
+}

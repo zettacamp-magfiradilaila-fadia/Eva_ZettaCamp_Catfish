@@ -1,0 +1,20 @@
+@import url('nav.css');
+
+.service {
+  margin: 4px 5px;
+  padding: 5px 10px;
+  background-color: aliceblue;
+}
+
+.service h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-size: 30px;
+}
+
+.service p,
+ol li {
+  font-size: 22px;
+  padding: 5px 2px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}

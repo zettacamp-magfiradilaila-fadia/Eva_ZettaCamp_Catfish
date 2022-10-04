@@ -1,0 +1,51 @@
+* {
+  color: #38b000;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.container {
+  padding-top: 10px;
+  margin: auto;
+  height: 800px;
+  text-align: center;
+  padding-right: 15px;
+}
+
+.container h1 {
+  font-weight: 400;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding: 10px;
+}
+
+.card {
+  border: 4px #fb6107 solid;
+  border-radius: 2em;
+  width: 400px;
+  height: 450px;
+  margin: 10px 15px;
+  padding-top: 5px;
+  padding-bottom: 8px;
+  text-align: center;
+  background-color: #fb6107;
+}
+
+.card h1 ~ p {
+  background-color: white;
+  border-radius: 2em;
+}
+
+.card h1 {
+  border-top: 1px #fb6107 solid;
+  border-bottom: 1px #fb6107 solid;
+  background-color: yellow;
+  border-radius: 1em;
+  color: #08bdbd;
+  font-size: 28px;
+  font-weight: 800;
+  text-transform: uppercase;
+}

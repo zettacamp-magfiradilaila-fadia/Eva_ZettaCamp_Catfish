@@ -1,6 +1,7 @@
 * {
   color: #38b000;
   font-family: 'Nunito Sans', sans-serif;
+  background-color: aqua;
 }
 
 .container {
@@ -11,8 +12,8 @@
   padding-right: 15px;
 }
 
-.container h1 {
-  font-weight: 400;
+#head {
+  font-weight: 600;
 }
 
 .cards {
@@ -23,29 +24,35 @@
 }
 
 .card {
-  border: 4px #fb6107 solid;
+  border: 4px black solid;
   border-radius: 2em;
   width: 400px;
   height: 450px;
-  margin: 10px 15px;
+  margin: 4px 8px 12px 16px;
   padding-top: 5px;
   padding-bottom: 8px;
   text-align: center;
   background-color: #fb6107;
 }
 
-.card h1 ~ p {
+.card p {
   background-color: white;
   border-radius: 2em;
 }
 
 .card h1 {
-  border-top: 1px #fb6107 solid;
-  border-bottom: 1px #fb6107 solid;
+  border-top: 3px black solid;
+  border-bottom: 3px black solid;
   background-color: yellow;
   border-radius: 1em;
   color: #08bdbd;
   font-size: 28px;
   font-weight: 800;
   text-transform: uppercase;
+}
+
+.card img {
+  background-color: #fb6107;
+  width: 200px;
+  height: 200px;
 }

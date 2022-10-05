@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
+
+* {
+  background-color: cadetblue;
+}
+
+img {
+  width: 150px;
+  height: 200px;
+  padding-top: 8px;
+  background-color: #533483;
+}
+
+p::first-line {
+  color: #ff884b;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.container {
+  margin: auto;
+  text-align: center;
+  width: 800px;
+}
+
+h1 {
+  font-family: 'Silkscreen', cursive;
+  margin-bottom: 3px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  background-color: #533483;
+}
+
+p {
+  font-size: 14px;
+  padding-bottom: 5px;
+  background-color: #533483;
+}
+
+.cards-1,
+.cards-2,
+.cards-3 {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Prompt', sans-serif;
+}
+
+.cards-1 {
+  margin-top: 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.cards-2 {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cards-3 {
+  margin-bottom: 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.card-1,
+.card-2,
+.card-3 {
+  border: 1px grey solid;
+  margin-right: 15px;
+  height: 550px;
+  width: 50%;
+  padding: 15px;
+  border-radius: 2em;
+  box-shadow: 4px 4px grey;
+  background-color: #533483;
+}
+
+a {
+  border: 1px black solid;
+  border-radius: 1em;
+  padding: 8px;
+  background-color: silver;
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  background-color: aqua;
+}
+
+.footer {
+  width: 450px;
+  height: 150px;
+  margin: auto;
+  margin-top: 20px;
+  align-items: center;
+  padding: 15px;
+  justify-content: center;
+  display: flex;
+}
+
+.footer a {
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  width: 200px;
+}

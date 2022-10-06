@@ -26,7 +26,6 @@ p::first-line {
 
 h1 {
   font-family: 'Silkscreen', cursive;
-  margin-bottom: 3px;
 }
 
 h2 {
@@ -43,7 +42,10 @@ p {
 
 .cards-1,
 .cards-2,
-.cards-3 {
+.cards-3,
+.cards-4,
+.cards-5,
+.cards-6 {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -52,7 +54,10 @@ p {
 
 .card-1,
 .card-2,
-.card-3 {
+.card-3,
+.card-4,
+.card-5,
+.card-6 {
   border: 1px grey solid;
   margin-right: 15px;
   height: 550px;
@@ -64,12 +69,21 @@ p {
 }
 
 a {
-  border: 1px black solid;
-  border-radius: 1em;
-  padding: 8px;
   background-color: silver;
   text-decoration: none;
   color: black;
+}
+
+.bd-1 {
+  border: 1px black solid;
+}
+
+.br-1 {
+  border-radius: 1em;
+}
+
+.pd-8 {
+  padding: 8px;
 }
 
 a:hover {
@@ -110,4 +124,19 @@ a#hv-purple:hover {
 
 .mb-0 {
   margin-bottom: 0px;
+}
+
+h1#sticky {
+  text-align: center;
+  position: fixed;
+  top: 0px;
+  left: 400px;
+  right: 400px;
+  padding: 10px;
+  background-color: purple;
+  border-radius: 3em;
+}
+
+.mt-3 {
+  margin-top: 3px;
 }

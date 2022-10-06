@@ -10,6 +10,7 @@ img {
   height: 200px;
   padding-top: 8px;
   background-color: #533483;
+  margin-top: 5px;
 }
 
 p::first-line {
@@ -128,6 +129,7 @@ a#hv-purple:hover {
 
 h1#sticky {
   text-align: center;
+  margin: auto;
   position: fixed;
   top: 0px;
   left: 400px;

@@ -51,7 +51,6 @@ p {
 }
 
 .cards-1 {
-  margin-top: 0px;
   display: flex;
   justify-content: center;
 }
@@ -111,4 +110,16 @@ a:hover {
   margin: 10px;
   text-align: center;
   width: 200px;
+}
+
+a#hv-purple:hover {
+  background-color: purple;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.mt-5 {
+  margin-top: 5px;
 }

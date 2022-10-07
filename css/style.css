@@ -142,3 +142,10 @@ h1#sticky {
 .mt-3 {
   margin-top: 3px;
 }
+
+footer#sticky {
+  position: fixed;
+  bottom: 0;
+  left: 400px;
+  right: 400px;
+}

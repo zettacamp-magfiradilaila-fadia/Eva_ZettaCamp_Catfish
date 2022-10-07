@@ -1,0 +1,32 @@
+* {
+  background-color: #eef1ff;
+}
+
+.container {
+  margin: auto;
+  display: flex;
+  gap: 25px 30px;
+  width: 600px;
+  height: 80vh;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+
+.card {
+  border: 1px #d07000 solid;
+  text-align: center;
+  width: 25%;
+  padding: 0.5rem;
+  height: 300px;
+  margin-right: 10px;
+  margin-top: 15px;
+}
+
+p {
+  color: #42855b;
+  font-size: 1em;
+}
+
+h2 {
+  color: #ff1e00;
+}

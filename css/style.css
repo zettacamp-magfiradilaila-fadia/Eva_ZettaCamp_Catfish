@@ -2,7 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
 
 * {
-  background-color: cornflowerblue;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .container {

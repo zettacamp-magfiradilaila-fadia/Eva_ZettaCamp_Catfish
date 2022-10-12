@@ -1,4 +1,4 @@
-function purchaseBook(book_title, percentage_discount, percentage_tax, term_credit) {
+function purchaseBook(book_title, percentage_discount, percentage_tax, credit_term) {
   let price = 500000;
 
   const amount_of_discount = (percentage_discount *= price / 100);
@@ -12,6 +12,14 @@ function purchaseBook(book_title, percentage_discount, percentage_tax, term_cred
 
   const price_after_tax = price + amount_of_tax;
   console.log('Price after tax: ', price_after_tax);
+
+  let arrayResult;
+  price / credit_term;
+  const term = (price, term) => {};
+  for (let i = 0; i < credit_term; i++) {
+    return price / credit_term;
+  }
+  return arrayResult;
 }
 
-console.log(purchaseBook('Harry Potter', 20, 30));
+console.log(purchaseBook('Harry Potter', 20, 30, 6));

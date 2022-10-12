@@ -1,4 +1,4 @@
-function purchaseBook(book_title, percentage_discount, percentage_tax) {
+function purchaseBook(book_title, percentage_discount, percentage_tax, term_credit) {
   let price = 500000;
 
   const amount_of_discount = (percentage_discount *= price / 100);

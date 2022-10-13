@@ -196,4 +196,44 @@ var songLists = [
   },
 ];
 
-console.log(songLists);
+//console.log(songLists.duration);
+
+function songDuration() {
+  let result = [];
+  for (i = 0; i < songLists.length; i++) {
+    if (songLists.duration < 60) {
+      result.push({
+        artist: songLists.artist,
+        genre: songLists.genre,
+      });
+    }
+  }
+  console.log(songLists.duration);
+  console.log(songLists[0]);
+  return result;
+}
+songDuration();
+
+function songArtist() {
+  const result = [];
+  var song;
+  for (i = 0; i < songLists.length; i++)
+    [
+      {
+        song: song,
+      },
+    ];
+}
+//console.log(songArtist());
+
+function songGenre() {
+  const result = [];
+  var song;
+  for (i = 0; i < songLists.length; i++)
+    [
+      {
+        song: song,
+      },
+    ];
+}
+//console.log(songArtist());

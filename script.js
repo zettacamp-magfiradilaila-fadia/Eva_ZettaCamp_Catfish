@@ -189,9 +189,11 @@ var songLists = [
   },
 
   {
-    title: 'Sayoara no Wakusei',
+    title: 'Sayonara no Wakusei',
     artist: 'Yoshino Nanjo',
     genre: 'J-Pop',
     duration: 4,
   },
 ];
+
+console.log(songLists);

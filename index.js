@@ -1,4 +1,4 @@
-var songLists = [
+const songLists = [
   {
     title: 'Invoke',
     artist: 'T.M. Revolution',
@@ -120,7 +120,7 @@ var songLists = [
 
   {
     title: '4th Avenue Cafe',
-    artist: 'L~Arc~En~Ciel',
+    artist: 'LArcEn~Ciel',
     genre: ['Rock', 'Anime', 'J-Rock'],
     duration: 5,
   },
@@ -196,28 +196,49 @@ var songLists = [
   },
 ];
 
-//console.log(songLists.duration);
-
 function songDuration() {
   let result = [];
-  for (i = 0; i < songLists.length; i++) {
-    if (songLists.duration < 60) {
-      result.push({
-        artist: songLists.artist,
-        genre: songLists.genre,
-      });
+  let duration = 0;
+  //   for (i = 0; i < songLists.length; i++) {
+  //     console.log(i);
+  //     if (songLists.duration < 60) {
+  //       result.push({
+  //         artist: songLists.artist,
+  //         genre: songLists.genre,
+  //       });
+  //     }
+  //   }
+  for (const songList of songLists) {
+    // cari index random
+    // dari index itu nyari lagunya udah ada belum di result nya
+    // kalo misal udah ada, jangan dipush
+    if (duration < 60) {
+      result.push(songList);
+      duration += songList.duration;
     }
   }
-  console.log(songLists.duration);
-  console.log(songLists[0]);
+  console.log(duration);
+  //   console.log(songLists.length);
+  //   console.log(songLists.duration);
+  //   console.log(songLists[0]);
+  console.log(result.length);
   return result;
 }
-songDuration();
+// console.log(songDuration());
 
-const song = songLists.filter((artist) => artist);
-
-function songGenre(songList, genreParameter) {
-  const genreName = songList.filter((genre) => genre.genre === genreParameter);
-  return genreName;
+// const songArtist = (song, artist) => {
+//     return song.filter(artist => artist);
+// }
+function songArtist(songParameter, artist) {
+    const artistName = songParameter.filter(function (song) {
+        return song.artist === artist;
+    });
+    return artistName;
 }
-songGenre(songLists, 'J-Pop');
+
+function songArtist(songParameter, artist) {
+    const artistName = songParameter.filter(song => song.artist === artist);
+    return artistName;
+}
+
+console.log(songArtist(songLists, "Yuki Kajiura" ));

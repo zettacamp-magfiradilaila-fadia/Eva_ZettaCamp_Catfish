@@ -83,7 +83,7 @@ app.get('/await', (req, res) => {
   readFileDataAwait('./lorem.txt');
 });
 
-app.get('/sets-maps', (req, res) => {});
+app.get('/set-map', (req, res) => {});
 
 app.listen(port);
 function purchaseBook(book_title, percentage_discount, percentage_tax, credit_term, additional_term) {

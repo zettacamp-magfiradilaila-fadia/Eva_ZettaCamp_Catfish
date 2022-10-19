@@ -36,7 +36,23 @@ app.get('/bookPurchase', function (req, res) {
   console.log('Async is done');
 });*/
 
-app.get('/set-map', (req, res) => {});
+app.get('/set', (req, res) => {
+  const bookSet = new Set(['Harry Potter', 'Percy Jackson', 'Da Vinci Code', 'The Kane Chronicles', 'Lord of The Rings']);
+  //console.log(bookSet);
+  res.send(...bookSet);
+});
+
+app.get('/map', (req, res) => {
+  const bookMap = new Map([
+    ['book_1', 'Eragon'],
+    ['book_2', 'Frozen'],
+    ['book_3', 'Tintin'],
+    ['book_4', 'Apollo'],
+    ['book_5', 'Osas'],
+  ]);
+  //console.log(animalMap);
+  res.send(...bookMap);
+});
 
 app.listen(port);
 function purchaseBook(book_title, percentage_discount, percentage_tax, credit_term, additional_term) {
@@ -77,17 +93,3 @@ function purchaseBook(book_title, percentage_discount, percentage_tax, credit_te
   }
   return arrayResult;
 }*/
-
-const bookList = ['Harry Potter', 'Percy Jackson', 'The Kane Chronicles', 'Da Vinci Code', 'Lord of the Rings'];
-const bookSet = new Set(bookList);
-//bookSet.has('The Kane Chronicles');
-console.log(bookSet);
-
-const bookMap = new Map([
-  ['book_1', 'Harry Potter'],
-  ['book_2', 'Percy Jackson'],
-  ['book_3', 'The Kane Chronicles'],
-  ['book_4', 'Da Vinci Code'],
-  ['book_5', 'Lord of The Rings'],
-]);
-console.log(bookMap);

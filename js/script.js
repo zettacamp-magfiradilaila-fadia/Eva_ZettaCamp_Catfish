@@ -3,6 +3,7 @@ const app = express();
 const port = 8000;
 const fs = require('fs');
 const events = require('events');
+const { result } = require('lodash');
 const eventEmitter = new events.EventEmitter();
 
 app.get('/bookPurchase', function (req, res) {
@@ -38,50 +39,6 @@ app.get('/bookPurchase', function (req, res) {
   console.log(result);
   console.log('Async is done');
 });*/
-
-app.get('/no-await', (req, res) => {
-  const fs = require('fs');
-  const events = require('events');
-  const eventEmitter = new events.EventEmitter();
-  //console.log(eventEmitter);
-  function readDataFile(filename) {
-    const result = fs.readFile(filename, 'utf8');
-    console.log(result);
-  }
-  readDataFile('./lorem.txt');
-
-  const readFileDataAwait = async (fileName) => {
-    const result = await readDataFile(fileName);
-    console.log(result);
-  };
-  readDataFile('./lorem.txt');
-
-  eventEmitter.on('afterText', readDataFile);
-  eventEmitter.on('read await', readFileDataAwait);
-  eventEmitter.on('read await', './lorem.txt');
-});
-
-app.get('/await', (req, res) => {
-  const fs = require('fs').promises;
-  function readDataFile(filename) {
-    const result = fs.readFile(filename, 'utf8');
-    console.log(result);
-  }
-  readDataFile('./lorem.txt');
-
-  const readFileData = (dataPromise) => {
-    const result = dataPromise.then((data) => console.log(data));
-  };
-
-  readFileData(readDataFile('./lorem.txt'));
-
-  const readFileDataAwait = async (fileName) => {
-    const result = await readDataFile(fileName);
-    console.log(result);
-  };
-
-  readFileDataAwait('./lorem.txt');
-});
 
 app.get('/set-map', (req, res) => {});
 
@@ -124,3 +81,17 @@ function purchaseBook(book_title, percentage_discount, percentage_tax, credit_te
   }
   return arrayResult;
 }*/
+
+const bookList = ['Harry Potter', 'Percy Jackson', 'The Kane Chronicles', 'Da Vinci Code', 'Lord of the Rings'];
+const bookSet = new Set(bookList);
+//bookSet.has('The Kane Chronicles');
+console.log(bookSet);
+
+const bookMap = new Map([
+  ['book_1', 'Harry Potter'],
+  ['book_2', 'Percy Jackson'],
+  ['book_3', 'The Kane Chronicles'],
+  ['book_4', 'Da Vinci Code'],
+  ['book_5', 'Lord of The Rings'],
+]);
+console.log(bookMap);

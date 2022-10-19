@@ -27,8 +27,17 @@ app.get('/bookPurchase', function (req, res) {
   }
 });
 
+app.get('/async-bookPurchase', async (req, res) => {
+  const timeout = setTimeout(() => {
+    console.log('Done');
+  }, 3000);
+  const result = await calculatePriceTerm();
+  console.log(result);
+  console.log('Async is done');
+});
+
 app.listen(port);
-function purchaseBook(book_title, percentage_discount, percentage_tax, credit_term) {
+function purchaseBook(book_title, percentage_discount, percentage_tax, credit_term, additional_term) {
   let price = 500000;
 
   const amount_of_discount = (percentage_discount *= price / 100);
@@ -43,8 +52,21 @@ function purchaseBook(book_title, percentage_discount, percentage_tax, credit_te
   const price_after_tax = price + amount_of_tax;
   console.log('Price after tax: ', price_after_tax);
 
+  /*let arrayResult = [];
+  var total = price / credit_term;
+  for (let i = 1; i <= credit_term; i++) {
+    arrayResult.push({
+      price: total,
+      month: i,
+    });
+  }
+  return arrayResult;*/
+}
+
+async function bookPurchase(credit_term, additional_term) {
   let arrayResult = [];
   var total = price / credit_term;
+  var totalPriceTerm = total + additional_term;
   for (let i = 1; i <= credit_term; i++) {
     arrayResult.push({
       price: total,

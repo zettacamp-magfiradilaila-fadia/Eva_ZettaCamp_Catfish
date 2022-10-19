@@ -31,7 +31,7 @@ app.get('/async-bookPurchase', async (req, res) => {
   const timeout = setTimeout(() => {
     console.log('Done');
   }, 3000);
-  const result = await purchaseBook();
+  const result = await calculatePriceTerm();
   console.log(result);
   console.log('Async is done');
 });
@@ -54,6 +54,18 @@ function purchaseBook(book_title, percentage_discount, percentage_tax, credit_te
 
   let arrayResult = [];
   var total = price / credit_term;
+  var totalPerTerm = priceEachTerm + additional_term;
+  for (i = 0; i <= credit_term; i++) {
+    if (i === 3) {
+      calculatePriceTerm(priceCredit, additional_term);
+      return priceCredit + additional_term;
+    }
+    arrayResult.push({
+      price: totalPerTerm,
+      month: i,
+    });
+  }
+
   for (let i = 1; i <= credit_term; i++) {
     arrayResult.push({
       price: total,
@@ -64,10 +76,11 @@ function purchaseBook(book_title, percentage_discount, percentage_tax, credit_te
 }
 
 async function bookPurchase(credit_term, additional_term) {
-  var totalPriceTerm = total + additional_term;
-  for (const month of credit_term) {
-    if (month === 3) {
-      await calculatePriceTerm(total, additional_term);
+  var totalPerTerm = priceEachTerm + additional_term;
+  for (i = 0; i <= credit_term; i++) {
+    if (i === 3) {
+      await calculatePriceTerm(priceCredit, additional_term);
+      return priceCredit + additional_term;
     }
   }
 }

@@ -1,10 +1,6 @@
 const express = require('express');
 const app = express();
 const port = 8000;
-const fs = require('fs');
-const events = require('events');
-const { result } = require('lodash');
-const eventEmitter = new events.EventEmitter();
 
 app.get('/bookPurchase', function (req, res) {
   const auth = req.headers['authorization'];

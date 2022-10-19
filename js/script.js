@@ -81,17 +81,22 @@ function purchaseBook(book_title, percentage_discount, percentage_tax, credit_te
 }*/
 
 const fs = require('fs').promises;
-function readDataFile(filename) {
-  const result = fs.readFile(filename, 'utf8');
-  console.log(result);
+function readDataFile(fileName) {
+  const result = fs.readFile(fileName, 'utf8').catch(function (err) {
+    return err;
+  });
+  return result;
 }
-readDataFile('./lorem.txt');
+const dataFile = readDataFile('./lorem.txt');
+console.log(dataFile);
 
 const readFileData = (dataPromise) => {
+  console.log(dataPromise);
   const result = dataPromise.then((data) => console.log(data));
 };
 
-readFileData(readDataFile('./lorem.txt'));
+console.log(dataFile);
+readFileData(dataFile);
 
 const readFileDataAwait = async (fileName) => {
   const result = await readDataFile(fileName);
@@ -104,6 +109,6 @@ const events = require('events');
 const eventEmitter = new events.EventEmitter();
 //console.log(eventEmitter);
 
-eventEmitter.on('afterText', readDataFile);
-eventEmitter.on('read await', readFileDataAwait);
-eventEmitter.on('read await', './lorem.txt');
+//eventEmitter.on('afterText', readDataFile);
+//eventEmitter.on('read await', readFileDataAwait);
+//eventEmitter.on('read await', './lorem.txt');

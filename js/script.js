@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 const port = 8000;
+const fs = require('fs');
+const events = require('events');
+const eventEmitter = new events.EventEmitter();
 
 app.get('/bookPurchase', function (req, res) {
   const auth = req.headers['authorization'];
@@ -36,6 +39,8 @@ app.get('/bookPurchase', function (req, res) {
   console.log('Async is done');
 });*/
 
+//app.get('/no-await', (req, res) => {});
+//app.get('/await', (req, res) => {});
 app.listen(port);
 function purchaseBook(book_title, percentage_discount, percentage_tax, credit_term, additional_term) {
   let price = 500000;

@@ -1,11 +1,12 @@
 const express = require('express');
+const { request } = require('http');
 const app = express();
 const port = 8000;
 
 app.get('/bookPurchase', function (req, res) {
   const auth = req.headers['authorization'];
-  let { book_title, percentage_discount, percentage_tax, credit_term } = req.query;
-  console.log(book_title, percentage_discount, percentage_tax, credit_term);
+  let { book_title, percentage_discount, percentage_tax, credit_term, additional_term } = req.query;
+  console.log(book_title, percentage_discount, percentage_tax, credit_term, additional_term);
 
   const userpass = auth.split(' ')[1];
   //console.log(userpass);
@@ -19,7 +20,7 @@ app.get('/bookPurchase', function (req, res) {
   //console.log(password);
 
   if (username == 'firafadia28' && password == 'justfira28') {
-    let result = purchaseBook(book_title, percentage_discount, percentage_tax, credit_term);
+    let result = purchaseBook(book_title, percentage_discount, percentage_tax, credit_term, additional_term);
 
     res.send(result);
   } else {
@@ -28,12 +29,13 @@ app.get('/bookPurchase', function (req, res) {
 });
 
 app.get('/async-bookPurchase', async (req, res) => {
-  const timeout = setTimeout(() => {
-    console.log('Done');
-  }, 3000);
-  const result = await calculatePriceTerm();
-  console.log(result);
+  let result_2 = bookPurchase(6, 2000);
+  const result = await calculatePriceTerm(6, 2000);
+  console.log(result_2);
   console.log('Async is done');
+  result_2.then((param) => {
+    console.log(param);
+  });
 });
 
 app.listen(port);
@@ -54,33 +56,42 @@ function purchaseBook(book_title, percentage_discount, percentage_tax, credit_te
 
   let arrayResult = [];
   var total = price / credit_term;
-  var totalPerTerm = priceEachTerm + additional_term;
+  var totalPerTerm = total + additional_term;
   for (i = 0; i <= credit_term; i++) {
     if (i === 3) {
-      calculatePriceTerm(priceCredit, additional_term);
-      return priceCredit + additional_term;
+      let resultTerm = calculatePriceTerm(total, additional_term);
+      console.log(resultTerm);
+      console.log(total);
+      console.log(additional_term);
     }
-    arrayResult.push({
-      price: totalPerTerm,
-      month: i,
-    });
-  }
-
-  for (let i = 1; i <= credit_term; i++) {
     arrayResult.push({
       price: total,
       month: i,
     });
   }
+
+  /*for (let i = 1; i <= credit_term; i++) {
+    arrayResult.push({
+      price: total,
+      month: i,
+    });
+  }*/
   return arrayResult;
 }
 
 async function bookPurchase(credit_term, additional_term) {
-  var totalPerTerm = priceEachTerm + additional_term;
+  var totalPerTerm = credit_term + additional_term;
+  var result;
   for (i = 0; i <= credit_term; i++) {
     if (i === 3) {
-      await calculatePriceTerm(priceCredit, additional_term);
-      return priceCredit + additional_term;
+      result = await calculatePriceTerm(totalPerTerm, 2000);
     }
   }
+  return result;
+}
+
+function calculatePriceTerm(priceCredit, additionalTerm) {
+  let term = additionalTerm + priceCredit;
+
+  return term;
 }

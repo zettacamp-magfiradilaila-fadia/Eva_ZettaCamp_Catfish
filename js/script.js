@@ -51,6 +51,10 @@ app.get('/map', (req, res) => {
     ['book_5', 'Osas'],
   ]);
   //console.log(animalMap);
+  let text;
+  bookMap.forEach(function (value, key) {
+    text += key + ': ' + value;
+  });
   res.send(...bookMap);
 });
 

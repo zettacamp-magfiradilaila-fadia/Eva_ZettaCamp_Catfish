@@ -1,3 +1,4 @@
+const { application } = require('express');
 const express = require('express');
 const { request } = require('http');
 const jwt = require('jsonwebtoken');
@@ -6,25 +7,37 @@ const port = 8080;
 
 app.get('/login', (req, res) => {
   const { username, password } = req.query;
+
   const token = jwt.sign(
     {
-      username: username,
+      name: username,
       password: password,
     },
-    'password',
-    { expiresIn: 60 * 60 }
+    'password'
   );
-  res.send({
-    token: token,
-  });
+
+  res.send({ token: token });
 });
 
 app.get('/song-artist', (req, res) => {
-  function songArtist(songList, artistParameter) {
-    const artistName = songList.filter((artist) => artist.artist === artistParameter);
-    return artistName;
-  }
-  console.log(songArtist(songLists, 'T-ARA'));
+  const auth = req.headers['authorization'];
+  const token = auth.split(' ')[1];
+  jwt.sign(token, { expiresIn: 60 * 60 });
+  res.send(songArtist(songLists, 'T-ARA'));
+});
+
+app.get('/song-genre', (req, res) => {
+  const auth = req.headers['authorization'];
+  const token = auth.split(' ')[1];
+  jwt.sign(token, { expiresIn: 60 * 60 });
+  res.send(songGenre(songLists, 'Pop'));
+});
+
+app.get('/song-duration', (req, res) => {
+  const auth = req.headers['authorization'];
+  const token = auth.split(' ')[1];
+  jwt.sign(token, { expiresIn: 60 * 60 });
+  res.send(songDuration());
 });
 
 app.listen(port);
@@ -246,3 +259,9 @@ function songGenre(songList, genreParameter) {
   return genreName;
 }
 console.log(songGenre(songLists, 'J-Pop'));
+
+function songArtist(songList, artistParameter) {
+  const artistName = songList.filter((artist) => artist.artist === artistParameter);
+  return artistName;
+}
+console.log(songArtist(songLists, 'T-ARA'));

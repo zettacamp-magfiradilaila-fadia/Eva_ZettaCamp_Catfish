@@ -1,3 +1,33 @@
+const express = require('express');
+const { request } = require('http');
+const jwt = require('jsonwebtoken');
+const app = express();
+const port = 8080;
+
+app.get('/login', (req, res) => {
+  const { username, password } = req.query;
+  const token = jwt.sign(
+    {
+      username: username,
+      password: password,
+    },
+    'password',
+    { expiresIn: 60 * 60 }
+  );
+  res.send({
+    token: token,
+  });
+});
+
+app.get('/song-artist', (req, res) => {
+  function songArtist(songList, artistParameter) {
+    const artistName = songList.filter((artist) => artist.artist === artistParameter);
+    return artistName;
+  }
+  console.log(songArtist(songLists, 'T-ARA'));
+});
+
+app.listen(port);
 var songLists = [
   {
     title: 'Invoke',
@@ -196,28 +226,23 @@ var songLists = [
   },
 ];
 
-//console.log(songLists.duration);
-
 function songDuration() {
   let result = [];
-  for (i = 0; i < songLists.length; i++) {
-    if (songLists.duration < 60) {
-      result.push({
-        artist: songLists.artist,
-        genre: songLists.genre,
-      });
+  let duration = 0;
+  for (const songList of songLists) {
+    if (duration < 60) {
+      result.push(songList);
+      duration += songList.duration;
     }
   }
-  console.log(songLists.duration);
-  console.log(songLists[0]);
+  //console.log(duration);
+  //console.log(result.length);
   return result;
 }
-songDuration();
-
-const song = songLists.filter((artist) => artist);
+console.log(songDuration());
 
 function songGenre(songList, genreParameter) {
   const genreName = songList.filter((genre) => genre.genre === genreParameter);
   return genreName;
 }
-songGenre(songLists, 'J-Pop');
+console.log(songGenre(songLists, 'J-Pop'));

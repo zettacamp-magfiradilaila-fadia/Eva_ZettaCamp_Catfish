@@ -20,23 +20,23 @@ app.get('/login', (req, res) => {
 });
 
 app.get('/song-artist', (req, res) => {
-  const auth = req.headers['authorization'];
+  /*const auth = req.headers['authorization'];
   const token = auth.split(' ')[1];
-  jwt.sign(token, { expiresIn: 60 * 60 });
+  jwt.sign(token, { expiresIn: 60 * 60 });*/
   res.send(songArtist(songLists, 'T-ARA'));
 });
 
 app.get('/song-genre', (req, res) => {
-  const auth = req.headers['authorization'];
+  /*const auth = req.headers['authorization'];
   const token = auth.split(' ')[1];
-  jwt.sign(token, { expiresIn: 60 * 60 });
+  jwt.sign(token, { expiresIn: 60 * 60 });*/
   res.send(songGenre(songLists, 'Pop'));
 });
 
 app.get('/song-duration', (req, res) => {
-  const auth = req.headers['authorization'];
+  /*const auth = req.headers['authorization'];
   const token = auth.split(' ')[1];
-  jwt.sign(token, { expiresIn: 60 * 60 });
+  jwt.sign(token, { expiresIn: 60 * 60 });*/
   res.send(songDuration());
 });
 

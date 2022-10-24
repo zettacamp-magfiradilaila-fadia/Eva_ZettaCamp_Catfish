@@ -37,6 +37,10 @@ app.get('/async-bookPurchase', async (req, res) => {
   });
 });
 
+app.get('/no-await', (req, res) => {});
+
+app.get('/await', (req, res) => {});
+
 app.get('/set', (req, res) => {
   const bookSet = new Set(['Harry Potter', 'Percy Jackson', 'Da Vinci Code', 'The Kane Chronicles', 'Lord of The Rings']);
   //console.log(bookSet);
@@ -116,3 +120,36 @@ function calculatePriceTerm(priceCredit, additionalTerm) {
 
   return term;
 }
+
+const fs = require('fs').promises;
+function readDataFile(fileName) {
+  const result = fs.readFile(fileName, 'utf8').catch(function (err) {
+    return err;
+  });
+  return result;
+}
+const dataFile = readDataFile('./lorem.txt');
+console.log(dataFile);
+
+const readFileData = (dataPromise) => {
+  console.log(dataPromise);
+  const result = dataPromise.then((data) => console.log(data));
+};
+
+console.log(dataFile);
+readFileData(dataFile);
+
+const readFileDataAwait = async (fileName) => {
+  const result = await readDataFile(fileName);
+  console.log(result);
+};
+
+readFileDataAwait('./lorem.txt');
+
+const events = require('events');
+const eventEmitter = new events.EventEmitter();
+//console.log(eventEmitter);
+
+//eventEmitter.on('afterText', readDataFile);
+//eventEmitter.on('read await', readFileDataAwait);
+//eventEmitter.on('read await', './lorem.txt');

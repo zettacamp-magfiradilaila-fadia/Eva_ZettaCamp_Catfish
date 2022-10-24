@@ -1,5 +1,4 @@
 const express = require('express');
-const { request } = require('http');
 const app = express();
 const port = 8000;
 
@@ -36,6 +35,28 @@ app.get('/async-bookPurchase', async (req, res) => {
   result_2.then((param) => {
     console.log(param);
   });
+});
+
+app.get('/set', (req, res) => {
+  const bookSet = new Set(['Harry Potter', 'Percy Jackson', 'Da Vinci Code', 'The Kane Chronicles', 'Lord of The Rings']);
+  //console.log(bookSet);
+  res.send(...bookSet);
+});
+
+app.get('/map', (req, res) => {
+  const bookMap = new Map([
+    ['book_1', 'Eragon'],
+    ['book_2', 'Frozen'],
+    ['book_3', 'Tintin'],
+    ['book_4', 'Apollo'],
+    ['book_5', 'Osas'],
+  ]);
+  //console.log(animalMap);
+  let text;
+  bookMap.forEach(function (value, key) {
+    text += key + ': ' + value;
+  });
+  res.send(...bookMap);
 });
 
 app.listen(port);

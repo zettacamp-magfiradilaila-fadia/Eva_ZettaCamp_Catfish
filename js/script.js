@@ -1,6 +1,17 @@
 const express = require('express');
 const app = express();
 const port = 8000;
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+var Book = require('../js/book_model');
+const { response } = require('express');
+
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 
 app.get('/bookPurchase', function (req, res) {
   const auth = req.headers['authorization'];
@@ -39,7 +50,9 @@ app.get('/async-bookPurchase', async (req, res) => {
 
 app.get('/no-await', (req, res) => {});
 
-app.get('/await', (req, res) => {});
+app.get('/await', (req, res) => {
+  res.send(readFileDataAwait('./lorem.txt'));
+});
 
 app.get('/set', (req, res) => {
   const bookSet = new Set(['Harry Potter', 'Percy Jackson', 'Da Vinci Code', 'The Kane Chronicles', 'Lord of The Rings']);
@@ -61,6 +74,83 @@ app.get('/map', (req, res) => {
     text += key + ': ' + value;
   });
   res.send(...bookMap);
+});
+
+app.get('/books', (req, res) => {
+  console.log('Getting books');
+  Book.find({}).exec((err, books) => {
+    if (err) {
+      res.send('Error has occured');
+    } else {
+      console.log(books);
+    }
+  });
+});
+
+app.get('/books/:id', (req, res) => {
+  console.log('Getting one book');
+  Book.findOne({
+    _id: req.params.id,
+  }).exec(function (err, book) {
+    if (err) {
+      res.send('Error occurred');
+    } else {
+      console.log(book);
+    }
+  });
+});
+
+app.post('/books', function (req, res) {
+  var newBook = new Book();
+
+  newBook.title = req.body.title;
+  newBook.author = req.body.author;
+  newBook.date_published = req.body.date_published;
+  newBook.price = req.body.price;
+  newBook.created_at = req.body.created_at;
+  newBook.updated_at = req.body.updated_at;
+
+  newBook.save((err, book) => {
+    if (err) {
+      res.send('Error saving book');
+    } else {
+      console.log(book);
+      res.send(book);
+    }
+  });
+});
+
+app.put('/book:id', (req, res) => {
+  Book.findOneAndUpdate(
+    {
+      _id: req.params.id,
+    },
+    { $set: { title: req.body.title } },
+    (err, newBook) => {
+      if (err) {
+        console.log('Error occured');
+      } else {
+        console.log(newBook);
+        res.send(newBook);
+      }
+    }
+  );
+});
+
+app.delete('/book/:id', (req, res) => {
+  Book.findOneAndRemove(
+    {
+      _id: req.params.id,
+    },
+    (err, book) => {
+      if (err) {
+        res.send('Error deleting book');
+      } else {
+        console.log(book);
+        res.send(book);
+      }
+    }
+  );
 });
 
 app.listen(port);
@@ -121,7 +211,7 @@ function calculatePriceTerm(priceCredit, additionalTerm) {
   return term;
 }
 
-const fs = require('fs').promises;
+/*const fs = require('fs').promises;
 function readDataFile(fileName) {
   const result = fs.readFile(fileName, 'utf8').catch(function (err) {
     return err;
@@ -152,4 +242,14 @@ const eventEmitter = new events.EventEmitter();
 
 //eventEmitter.on('afterText', readDataFile);
 //eventEmitter.on('read await', readFileDataAwait);
-//eventEmitter.on('read await', './lorem.txt');
+//eventEmitter.on('read await', './lorem.txt');*/
+
+var myDB = 'mongodb://localhost:27017/';
+mongoose.connect(myDB);
+var db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+
+db.once('open', function () {
+  console.log('Connection Successful!');
+});

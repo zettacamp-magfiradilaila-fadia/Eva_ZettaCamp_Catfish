@@ -2,9 +2,9 @@ const express = require('express');
 const app = express();
 const port = 8000;
 const mongoose = require('mongoose');
-//const BookModel = require('../js/book_model');
+const BookModel = require('../js/book_model');
 const { response } = require('express');
-//const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 var myDB = 'mongodb://localhost:27017/';
 mongoose.connect(myDB);
@@ -16,18 +16,24 @@ db.once('open', function () {
   console.log('Connection Successful!');
 });
 
-/*app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
     extended: true,
   })
-);*/
+);
 
 //------------------------------ DAY 1 ------------------------------
-/*app.get('/save-book', (req, res) => {
-  const bookList = [
-    { title: 'Percy Jackson and The Olympians : The Lightning Thief', author: 'Rick Riordan', date_published: '28/06/2005', price: 85000 },
-    { title: 'Percy Jackson and The Olympians : The Sea Monsters', author: 'Rick Riordan', date_published: '01/04/2006', price: 85000 },
+app.get('/save-book', (req, res) => {
+  /*const book_1 = new BookModel({ title: 'Percy Jackson and The Olympians : The Lightning Thief', author: 'Rick Riordan', date_published: '28/06/2005', price: 85000 });
+  const result = book_1.save((err, book) => {
+    if (err) {
+      console.log('failed to insert');
+    } else {
+      console.log(book.title + ' saved successfully');
+    }
+  });*/
+  var bookList = [
     { title: 'Percy Jackson and The Olympians : The Titans Curse', author: 'Rick Riordan', date_published: '11/05/2007', price: 85000 },
     { title: 'Percy Jackson and The Olympians : The Battle of Labyrinth', author: 'Rick Riordan', date_published: '06/05/2008', price: 85000 },
     { title: 'Percy Jackson and The Olympians : The Last Olympian', author: 'Rick Riordan', date_published: '05/05/2009', price: 85000 },
@@ -48,9 +54,27 @@ app.use(
     { title: 'Magnus Chase and the Gods of Asgard : The Hammer of Thor', author: 'Rick Riordan', date_published: '04/10/2016', price: 100000 },
     { title: 'Magnus Chase and the Gods of Asgard : The Ship of The Dead', author: 'Rick Riordan', date_published: '03/10/2017', price: 100000 },
   ];
-  const result = bookList.save();
+  const result = BookModel.insertMany(bookList, (err, data) => {
+    if (err) {
+      console.log('failed to insert');
+    } else {
+      console.log('successfully inserted');
+    }
+  });
   res.send(result);
-});*/
+});
+
+app.post('/insert-book', (req, res) => {
+  const { title, author, date_published, price } = req.query;
+  const newBook = new BookModel({
+    title: title,
+    author: author,
+    date_published: date_published,
+    price: price,
+  });
+  const result = newBook.save();
+  res.send(result);
+});
 
 app.get('/', (req, res) => {
   res.send('Test');

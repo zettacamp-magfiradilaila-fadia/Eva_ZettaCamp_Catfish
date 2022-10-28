@@ -4,7 +4,7 @@ const port = 8000;
 const mongoose = require('mongoose');
 const BookModel = require('../js/book_model');
 const { response } = require('express');
-
+const bodyParser = require('body-parser');
 var myDB = 'mongodb://localhost:27017/';
 mongoose.connect(myDB);
 var db = mongoose.connection;
@@ -15,13 +15,13 @@ db.once('open', function () {
   console.log('Connection Successful!');
 });
 
-/*app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
     extended: true,
   })
-);*/
-app.get('/save-book', (req, res) => {
+);
+app.get('/save-book', async (req, res) => {
   /*const book_1 = new BookModel({ title: 'Percy Jackson and The Olympians : The Lightning Thief', author: 'Rick Riordan', date_published: '28/06/2005', price: 85000 });
   const result = book_1.save((err, book) => {
     if (err) {
@@ -51,17 +51,11 @@ app.get('/save-book', (req, res) => {
     { title: 'Magnus Chase and the Gods of Asgard : The Hammer of Thor', author: 'Rick Riordan', date_published: '04/10/2016', price: 100000 },
     { title: 'Magnus Chase and the Gods of Asgard : The Ship of The Dead', author: 'Rick Riordan', date_published: '03/10/2017', price: 100000 },
   ];
-  const result = BookModel.insertMany(bookList, (err, data) => {
-    if (err) {
-      console.log('failed to insert');
-    } else {
-      console.log('successfully inserted');
-    }
-  });
+  const result = await BookModel.insertMany(bookList);
   res.send(result);
 });
 
-app.post('/insert-book', (req, res) => {
+app.post('/insert-book', async (req, res) => {
   const { title, author, date_published, price } = req.query;
   const newBook = new BookModel({
     title: title,
@@ -69,13 +63,19 @@ app.post('/insert-book', (req, res) => {
     date_published: date_published,
     price: price,
   });
-  const result = newBook.save();
+
+  const result = await newBook.save();
+  console.log(result);
   res.send(result);
 });
 
-app.get('/find-all', (req, res) => {
-  const result = BookModel.find();
-  console.log(result);
+app.get('/find-all', async (req, res) => {
+  const result = await BookModel.find();
+  res.send(result);
+});
+
+app.get('/delete-one', async (req, res) => {
+  const result = await BookModel.deleteOne({ _id: mongoose.Types.ObjectId('635b2a3a7eca254a3b09f1bf') });
   res.send(result);
 });
 //-------------------------------------------------------------------

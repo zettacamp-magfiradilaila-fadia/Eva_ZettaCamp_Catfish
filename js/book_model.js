@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const bookSchema = new mongoose.Schema(
   {
-    title: String,
-    author: String,
-    date_published: Date,
-    price: Number,
+    title: { type: String },
+    author: { type: String },
+    date_published: { type: String },
+    price: { type: Number },
   },
   { timestamps: true }
 );

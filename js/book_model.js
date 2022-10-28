@@ -7,6 +7,6 @@ const bookSchema = new Schema(
     date_published: { type: String },
     price: { type: Number },
   },
-  { timestamp: true }
+  { timestamps: true }
 );
 module.exports = mongoose.model('Book', bookSchema);

@@ -3,6 +3,7 @@ const app = express();
 const port = 8000;
 const mongoose = require('mongoose');
 const BookModel = require('../js/book_model');
+const BookshelfModel = require('../js/bookshelf_model');
 const { response } = require('express');
 const bodyParser = require('body-parser');
 
@@ -23,7 +24,7 @@ app.use(
   })
 );
 
-//------------------------------ DAY 1 ------------------------------
+//------------------------------ DAY 2 ------------------------------
 app.get('/save-book', (req, res) => {
   /*const book_1 = new BookModel({ title: 'Percy Jackson and The Olympians : The Lightning Thief', author: 'Rick Riordan', date_published: '28/06/2005', price: 85000 });
   const result = book_1.save((err, book) => {
@@ -76,6 +77,42 @@ app.post('/insert-book', (req, res) => {
   res.send(result);
 });
 
+app.get('/find-all', (req, res) => {
+  const result = BookModel.find();
+  res.send(result);
+});
+//-------------------------------------------------------------------
+
+//------------------------------ DAY 3 ------------------------------
+app.get('/get-all-bookshelf', (req, res) => {
+  const result = BookshelfModel.find({
+    book_id: mongoose.Types.ObjectId(),
+  });
+  res.send(result);
+});
+
+app.post('/insert-bookshelf', (req, res) => {
+  const { name, book_id } = req.query;
+  const newBookshelf = BookshelfModel({
+    name: name,
+    book_ids: mongoose.Types.ObjectId(),
+  });
+  const result = newBookshelf.save();
+  res.send(result);
+});
+
+app.post('/insert-bookshelf-2', (req, res) => {
+  const bookshelfList = new BookshelfModel({
+    name: 'Bookshelf 1',
+    book_ids: [mongoose.Types.ObjectId('6358ef5196fa324369dba9a6'), mongoose.Types.ObjectId('6358f3cabd7e94a21b0f6618')],
+  });
+  const result = BookshelfModel.insertMany(bookshelfList);
+  console.log(result);
+  res.send(result);
+});
+//------------------------------ DAY 4 ------------------------------
+//------------------------------ DAY 5 ------------------------------
+//------------------------------ DAY 6 ------------------------------
 app.get('/', (req, res) => {
   res.send('Test');
 });

@@ -3,6 +3,7 @@ const app = express();
 const port = 8000;
 const mongoose = require('mongoose');
 const BookModel = require('../js/book_model');
+const Bookshelf = require('../js/bookshelf_model');
 const { response } = require('express');
 
 var myDB = 'mongodb://localhost:27017/';

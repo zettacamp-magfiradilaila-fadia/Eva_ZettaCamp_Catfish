@@ -79,6 +79,11 @@ app.get('/find-all', (req, res) => {
   const result = BookModel.find();
   res.send(result);
 });
+
+app.get('/delete-one', async (req, res) => {
+  const result = await BookModel.deleteOne({ _id: mongoose.Types.ObjectId('635b2a3a7eca254a3b09f1bf') });
+  res.send(result);
+});
 //-------------------------------------------------------------------
 
 //------------------------------ DAY 3 ------------------------------

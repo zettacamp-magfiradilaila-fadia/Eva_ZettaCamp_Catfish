@@ -3,7 +3,7 @@ const app = express();
 const port = 8000;
 const mongoose = require('mongoose');
 const BookModel = require('../js/book_model');
-const Bookshelf = require('../js/bookshelf_model');
+const BookshelfModel = require('../js/bookshelf_model');
 const { response } = require('express');
 
 var myDB = 'mongodb://localhost:27017/';
@@ -89,12 +89,12 @@ app.get('/delete-one', async (req, res) => {
 //------------------------------ DAY 3 ------------------------------
 app.get('/get-all-bookshelf', (req, res) => {
   const result = BookshelfModel.find({
-    book_id: mongoose.Types.ObjectId(),
+    book_ids: mongoose.Types.ObjectId,
   });
   res.send(result);
 });
 
-app.post('/insert-bookshelf', (req, res) => {
+/*app.post('/insert-bookshelf', (req, res) => {
   const { name, book_id } = req.query;
   const newBookshelf = BookshelfModel({
     name: name,
@@ -102,14 +102,17 @@ app.post('/insert-bookshelf', (req, res) => {
   });
   const result = newBookshelf.save();
   res.send(result);
-});
+});*/
 
-app.post('/insert-bookshelf-2', (req, res) => {
-  const bookshelfList = new BookshelfModel({
-    name: 'Bookshelf 1',
-    book_ids: [mongoose.Types.ObjectId('6358ef5196fa324369dba9a6'), mongoose.Types.ObjectId('6358f3cabd7e94a21b0f6618')],
-  });
-  const result = BookshelfModel.insertMany(bookshelfList);
+app.get('/insert-bookshelf-2', async (req, res) => {
+  /*const bookshelfList = new BookshelfModel(
+    {
+      name: 'Bookshelf 1',
+      book_ids: [mongoose.Types.ObjectId('6358ef5196fa324369dba9a6'), mongoose.Types.ObjectId('6358f3cabd7e94a21b0f6618')],
+    },
+    { name: 'Bookshelf 2', book_ids: [mongoose.Types.ObjectId('6358f5295c87070450c20577'), mongoose.Types.ObjectId('6358f5295c87070450c2057b')] }
+  );*/
+  const result = await BookshelfModel.insertMany(bookshelfList);
   console.log(result);
   res.send(result);
 });

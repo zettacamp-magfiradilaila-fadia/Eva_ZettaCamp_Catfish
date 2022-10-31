@@ -114,7 +114,18 @@ app.post('/insert-bookshelf-2', (req, res) => {
 //------------------------------ DAY 5 ------------------------------
 //------------------------------ DAY 6 ------------------------------
 //------------------------------ DAY 7 ------------------------------
-app.get('/', async (req, res) => {});
+app.get('/group-facet-book', async (req, res) => {
+  const group_facet_result = await BookModel.aggregate([
+    {
+      $facet: {
+        categorizedbyAuthor: [{ $group: { _id: '$author' } }, { $limit: 5 }, { $skip: 0 }],
+        categorizedbyTitle: [{ $group: { _id: '$title' } }, { $limit: 10 }, { $skip: 5 }],
+      },
+    },
+  ]);
+  console.log(group_facet_result);
+  res.send(group_facet_result);
+});
 //-------------------------------------------------------------------
 app.get('/', (req, res) => {
   res.send('Test');

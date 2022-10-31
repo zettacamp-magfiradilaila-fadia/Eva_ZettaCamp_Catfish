@@ -84,7 +84,7 @@ app.get('/find-all', (req, res) => {
 //-------------------------------------------------------------------
 
 //------------------------------ DAY 3 ------------------------------
-app.get('/get-all-bookshelf', (req, res) => {
+/*app.get('/get-all-bookshelf', (req, res) => {
   const result = BookshelfModel.find({
     book_id: mongoose.Types.ObjectId(),
   });
@@ -109,10 +109,13 @@ app.post('/insert-bookshelf-2', (req, res) => {
   const result = BookshelfModel.insertMany(bookshelfList);
   console.log(result);
   res.send(result);
-});
+});*/
 //------------------------------ DAY 4 ------------------------------
 //------------------------------ DAY 5 ------------------------------
 //------------------------------ DAY 6 ------------------------------
+//------------------------------ DAY 7 ------------------------------
+app.get('/', async (req, res) => {});
+//-------------------------------------------------------------------
 app.get('/', (req, res) => {
   res.send('Test');
 });

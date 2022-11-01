@@ -258,4 +258,22 @@ app.get('/get-one-song', async (req, res) => {
   res.send(result);
 });
 
+/*app.get('/update-song', async (req, res) => {
+  const result = await SongModel.updateOne({ title: 'Tactics' }, { $set: { title: 'GO', artist: 'Flow' } });
+  console.log(result);
+  res.send(result);
+});*/
+
+app.put('/update-song-2/:id', async (req, res) => {
+  const result = await SongModel.findOneAndUpdate({ _id: req.params.id }, { $set: { title: req.body.title, artist: req.body.artist } });
+  console.log(result);
+  res.send(result);
+});
+
+app.delete('/delete-song', async (req, res) => {
+  const { title } = req.query;
+  const result = await SongModel.deleteOne({ title: title });
+  console.log(result);
+  res.send(result);
+});
 //------ PLAYLIST ------//

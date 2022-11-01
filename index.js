@@ -230,15 +230,17 @@ function songDuration() {
 //     return song.filter(artist => artist);
 // }
 function songArtist(songParameter, artist) {
-    const artistName = songParameter.filter(function (song) {
-        return song.artist === artist;
-    });
-    return artistName;
+  const artistName = songParameter.filter(function (song) {
+    return song.artist === artist;
+  });
+  return artistName;
 }
 
 function songArtist(songParameter, artist) {
-    const artistName = songParameter.filter(song => song.artist === artist);
-    return artistName;
+  const artistName = songParameter.filter((song) => song.artist === artist);
+  return artistName;
 }
 
-console.log(songArtist(songLists, "Yuki Kajiura" ));
+console.log(songArtist(songLists, 'Yuki Kajiura'));
+
+//----------- MONGOOSE ----------//

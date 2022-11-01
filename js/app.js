@@ -87,20 +87,20 @@ app.get('/delete-one', async (req, res) => {
 //-------------------------------------------------------------------
 
 //------------------------------ DAY 3 ------------------------------
-app.get('/get-all-bookshelf', (req, res) => {
-  const result = BookshelfModel.find({
-    book_ids: mongoose.Types.ObjectId,
-  });
+app.get('/get-all-bookshelf', async (req, res) => {
+  const result = await BookshelfModel.find();
+  console.log(result);
   res.send(result);
 });
 
-/*app.post('/insert-bookshelf', (req, res) => {
-  const { name, book_id } = req.query;
+/*app.post('/insert-bookshelf', async (req, res) => {
+  const { name, book_ids } = req.query;
   const newBookshelf = BookshelfModel({
     name: name,
-    book_ids: mongoose.Types.ObjectId(),
+    book_ids: [mongoose.Types.ObjectId()],
   });
-  const result = newBookshelf.save();
+  const result = await newBookshelf.save();
+  console.log(result);
   res.send(result);
 });*/
 
@@ -108,15 +108,30 @@ app.get('/insert-bookshelf-2', async (req, res) => {
   /*const bookshelfList = new BookshelfModel(
     {
       name: 'Bookshelf 1',
-      book_ids: [mongoose.Types.ObjectId('6358ef5196fa324369dba9a6'), mongoose.Types.ObjectId('6358f3cabd7e94a21b0f6618')],
+      book_ids: [mongoose.Types.ObjectId('6358ef5196fa324369dba9a6'), mongoose.Types.ObjectId('6358f3cabd7e94a21b0f6618')]
     },
-    { name: 'Bookshelf 2', book_ids: [mongoose.Types.ObjectId('6358f5295c87070450c20577'), mongoose.Types.ObjectId('6358f5295c87070450c2057b')] }
+    { name: 'Bookshelf 2', 
+      book_ids: [mongoose.Types.ObjectId('6358f5295c87070450c20577'), mongoose.Types.ObjectId('6358f5295c87070450c2057b')]
+    },
+    { name: 'Bookshelf 3', 
+      book_ids: [mongoose.Types.ObjectId('6358f5295c87070450c20577'), mongoose.Types.ObjectId('6358f5295c87070450c2057b')]
+    },
+    { name: 'Bookshelf 4', 
+      book_ids: [mongoose.Types.ObjectId('6358f5295c87070450c20577'), mongoose.Types.ObjectId('6358f5295c87070450c2057b')]
+    },
+    { name: 'Bookshelf 5', 
+      book_ids: [mongoose.Types.ObjectId('6358f5295c87070450c20577'), mongoose.Types.ObjectId('6358f5295c87070450c2057b')]
+    },
+    { name: 'Bookshelf 6', 
+      book_ids: [mongoose.Types.ObjectId('6358f5295c87070450c20577'), mongoose.Types.ObjectId('6358f5295c87070450c2057b')]
+    },
+    { name: 'Bookshelf 7', 
+      book_ids: [mongoose.Types.ObjectId('6358f5295c87070450c20577'), mongoose.Types.ObjectId('6358f5295c87070450c2057b')]
+    },
   );*/
   const result = await BookshelfModel.insertMany(bookshelfList);
   console.log(result);
   res.send(result);
 });
-//------------------------------ DAY 4 ------------------------------
-//------------------------------ DAY 5 ------------------------------
-//------------------------------ DAY 6 ------------------------------
+//-------------------------------------------------------------------
 app.listen(port);

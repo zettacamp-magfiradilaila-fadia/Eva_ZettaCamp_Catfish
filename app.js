@@ -341,4 +341,14 @@ app.get('/aggregate-song', async (req, res) => {
   res.send(result);
 });
 
-app.get('/aggregate-song-2', async (req, res) => {});
+app.get('/aggregate-song-2', async (req, res) => {
+  const result = await SongModel.aggregate([
+    {
+      $facet: {
+        categorizedByGenre: [{ $group: { _id: '$genre' } }, { $sort: { genre: 1 } }, { $limit: 10 }, { $skip: 1 }],
+      },
+    },
+  ]);
+  console.log(result);
+  res.send(result);
+});

@@ -242,5 +242,3 @@ function songArtist(songParameter, artist) {
 }
 
 console.log(songArtist(songLists, 'Yuki Kajiura'));
-
-//----------- MONGOOSE ----------//

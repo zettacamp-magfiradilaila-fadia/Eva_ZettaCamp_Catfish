@@ -106,19 +106,15 @@ app.get('/get-all-bookshelf-3', async (req, res) => {
     book_ids: { $in: [mongoose.Types.ObjectId('6358f5295c87070450c20578')] },
   });
 
-  const result_2 = await BookshelfModel.find({
-    _id: { $elemMatch: { book_ids: mongoose.Types.ObjectId('6358f5295c87070450c20578') } },
-  });
-
-  console.log(result, result_2);
-  res.send(result, result_2);
+  console.log(result);
+  res.send(result);
 });
 
-app.put('/insert-bookshelf', async (req, res) => {
+app.post('/insert-bookshelf', async (req, res) => {
   const { name } = req.query;
   const newBookshelf = BookshelfModel({
     name: name,
-    book_ids: [mongoose.Types.ObjectId()],
+    book_ids: [new mongoose.Types.ObjectId()],
   });
   const result = await newBookshelf.save();
   console.log(result);
@@ -139,6 +135,32 @@ app.get('/insert-bookshelf-2', async (req, res) => {
     { name: 'Bookshelf 7', book_ids: [mongoose.Types.ObjectId('6358f5295c87070450c20580'), mongoose.Types.ObjectId('6358f5295c87070450c20578')] },
   ];
   const result = await BookshelfModel.insertMany(bookshelfList);
+  console.log(result);
+  res.send(result);
+});
+
+app.put('/update-bookshelf/:id', async (req, res) => {
+  const result = await BookshelfModel.findOneAndUpdate({ _id: req.params.id }, { $set: { books_id: [req.query.mongoose.Types.ObjectId()] } });
+  console.log(result);
+  res.send(result);
+});
+
+app.get('/update-bookshelf-2', async (req, res) => {
+  const result = await BookshelfModel.findOneAndUpdate(
+    {
+      _id: mongoose.Types.ObjectId('6360c9ff634102482a8706ac'),
+    },
+    { $set: { book_ids: [mongoose.Types.ObjectId('6358f5295c87070450c20573'), mongoose.Types.ObjectId('6358f5295c87070450c20583')] } }
+  );
+  console.log(result);
+  res.send(result);
+});
+
+app.delete('/delete-bookshelf', async (req, res) => {
+  const { name } = req.query;
+  const result = await BookshelfModel.findOneAndDelete({
+    name: name,
+  });
   console.log(result);
   res.send(result);
 });

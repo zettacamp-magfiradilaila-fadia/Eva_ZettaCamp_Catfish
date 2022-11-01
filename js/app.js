@@ -111,13 +111,15 @@ app.get('/get-all-bookshelf-3', async (req, res) => {
 });
 
 app.post('/insert-bookshelf', async (req, res) => {
-  const { name } = req.query;
+  const { name, book_ids } = req.query;
+  const newBook = [];
+  console.log(book_ids.split(',').map((param) => newBook.push(mongoose.Types.ObjectId(param.trim()))));
   const newBookshelf = BookshelfModel({
     name: name,
-    book_ids: [new mongoose.Types.ObjectId()],
+    book_ids: newBook,
   });
   const result = await newBookshelf.save();
-  console.log(result);
+  //console.log(result);
   res.send(result);
 });
 

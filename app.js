@@ -276,4 +276,69 @@ app.delete('/delete-song', async (req, res) => {
   console.log(result);
   res.send(result);
 });
+
 //------ PLAYLIST ------//
+app.post('/insert-playlist', async (req, res) => {
+  const { playlist_name } = req.query;
+  const result = await PlaylistModel.save({
+    playlist_name: playlist_name,
+    songs_id: [mongoose.Types.ObjectId()],
+  });
+  console.log(result);
+  res.send(result);
+});
+
+app.get('/insert-playlist-2', async (req, res) => {
+  const playlist = [
+    { playlist_name: 'Playlist 1', songs_id: [mongoose.Types.ObjectId('6360a5d758abfe59d2ba0db9'), mongoose.Types.ObjectId('6360a5d758abfe59d2ba0dbc'), mongoose.Types.ObjectId('6360a5d758abfe59d2ba0dc1')] },
+    { playlist_name: 'Playlist 2', songs_id: [mongoose.Types.ObjectId('6360a5d758abfe59d2ba0dbd'), mongoose.Types.ObjectId('6360a5d758abfe59d2ba0dbe'), mongoose.Types.ObjectId('6360a5d758abfe59d2ba0dd0')] },
+  ];
+  const result = await PlaylistModel.insertMany(playlist);
+  console.log(result);
+  res.send(result);
+});
+
+app.get('/find-all-playlist', async (req, res) => {
+  const result = await PlaylistModel.find();
+  console.log(result);
+  res.send(result);
+});
+
+app.get('/find-one', async (req, res) => {
+  const { songs_id } = req.query;
+  const result = await PlaylistModel.findOne({
+    songs_id: mongoose.Types.ObjectId('6360a5d758abfe59d2ba0dbe'),
+  });
+  console.log(result);
+  res.send(result);
+});
+
+app.put('/update-playlist/:playlist_name', async (req, res) => {
+  const result = await PlaylistModel.updateOne({ playlist_name: req.params.playlist_name }, { $set: { songs_id: [mongoose.Types.ObjectId()] } });
+  console.log(result);
+  res.send(result);
+});
+
+app.delete('/delete-playlist', async (req, res) => {
+  const { playlist_name } = req.query;
+  const result = await PlaylistModel.deleteOne({
+    playlist_name: playlist_name,
+  });
+  console.log(result);
+  res.send(result);
+});
+
+//------ AGGREGATION ------//
+app.get('/aggregate-song', async (req, res) => {
+  const result = await SongModel.aggregate([
+    {
+      $match: { genre: req.body.genre },
+    },
+    { $limit: req.body.limit },
+    { $skip: req.body.skip },
+  ]);
+  console.log(result);
+  res.send(result);
+});
+
+app.get('/aggregate-song-2', async (req, res) => {});

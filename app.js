@@ -330,12 +330,14 @@ app.delete('/delete-playlist', async (req, res) => {
 
 //------ AGGREGATION ------//
 app.get('/aggregate-song', async (req, res) => {
+  console.log(req);
   const result = await SongModel.aggregate([
     {
-      $match: { genre: req.body.genre },
+      $match: { genre: req.query.genre },
     },
-    { $limit: req.body.limit },
-    { $skip: req.body.skip },
+    { $sort: { genre: +req.query.sort } },
+    { $limit: +req.query.limit },
+    { $skip: +req.query.skip * +req.query.limit },
   ]);
   console.log(result);
   res.send(result);

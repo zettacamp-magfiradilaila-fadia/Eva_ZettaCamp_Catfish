@@ -6,6 +6,9 @@ const BookModel = require('../js/book_model');
 const BookshelfModel = require('../js/bookshelf_model');
 const { response } = require('express');
 const bodyParser = require('body-parser');
+const { ApolloServer, gql } = require('apollo-server-express');
+const typeDefs = require('../js/typedefs');
+const resolvers = require('../js/resolvers');
 
 var myDB = 'mongodb://localhost:27017/';
 mongoose.connect(myDB);
@@ -132,3 +135,14 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port);
+
+const startServer = async () => {
+  const apolloServer = new ApolloServer({
+    typeDefs: typeDefs,
+    resolvers: resolvers,
+  });
+  await apolloServer.start();
+  apolloServer.applyMiddleware({ app: app });
+  app.listen('3000', () => console.log('Server up and running in 3000'));
+};
+startServer();

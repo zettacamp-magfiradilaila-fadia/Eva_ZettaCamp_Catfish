@@ -136,7 +136,7 @@ app.get('/', (req, res) => {
 
 app.listen(port);
 
-const startServer = async () => {
+const startServer = async function () {
   const apolloServer = new ApolloServer({
     typeDefs: typeDefs,
     resolvers: resolvers,

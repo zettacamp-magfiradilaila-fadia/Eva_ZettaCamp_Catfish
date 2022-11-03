@@ -138,8 +138,8 @@ app.listen(port);
 
 const startServer = async () => {
   const apolloServer = new ApolloServer({
-    typeDefs: typeDefs,
-    resolvers: resolvers,
+    typeDefs,
+    resolvers,
   });
   await apolloServer.start();
   apolloServer.applyMiddleware({ app: app });

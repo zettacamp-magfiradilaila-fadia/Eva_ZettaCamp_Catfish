@@ -24,6 +24,7 @@ const typeDefs = gql`
 
   type Query {
     getAllBooks: [Book]
+    getOneBook: [Book]
   }
 
   type Mutation {

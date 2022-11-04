@@ -5,23 +5,24 @@ const mongoose = require('mongoose');
 const BookModel = require('../js/book_model');
 const BookshelfModel = require('../js/bookshelf_model');
 const { response } = require('express');
+const bodyParser = require('body-parser');
 
-var myDB = 'mongodb://localhost:27017/';
-mongoose.connect(myDB);
-var db = mongoose.connection;
-
-db.on('error', console.error.bind(console, 'connection error:'));
-
-db.once('open', function () {
-  console.log('Connection Successful!');
+mongoose.connect('mongodb://localhost:27017', { useNewUrlParser: true });
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error: '));
+db.once('open', () => {
+  console.log('connected successfully');
 });
 
-/*app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
     extended: true,
   })
-);*/
+);
+
+app.use(express.json());
+
 //------------------------------ DAY 2 ------------------------------
 app.get('/save-book', (req, res) => {
   /*const book_1 = new BookModel({ title: 'Percy Jackson and The Olympians : The Lightning Thief', author: 'Rick Riordan', date_published: '28/06/2005', price: 85000 });

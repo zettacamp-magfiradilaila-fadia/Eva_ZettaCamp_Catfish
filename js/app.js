@@ -10,7 +10,7 @@ const { ApolloServer, gql } = require('apollo-server-express');
 const typeDefs = require('../js/typedefs');
 const resolvers = require('../js/resolvers');
 
-var myDB = 'mongodb://localhost:27017/';
+var myDB = 'mongodb://localhost:27017';
 mongoose.connect(myDB);
 var db = mongoose.connection;
 
